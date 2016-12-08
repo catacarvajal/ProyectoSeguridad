@@ -19,5 +19,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/Buscar', 'BuscarController@index');
+Route::post('/Buscar', 'BuscarController@postPokemon');
 Route::get('/Comentario/{id}', 'CommentaryController@index');
+
+Route::get('/Buscar/show/{id}', 'BuscarController@show');
+
 Route::post('/crearComentario', 'CommentaryController@store');
+
