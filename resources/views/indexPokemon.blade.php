@@ -28,7 +28,6 @@
                                 </tr>
                             </thead>            
                             <tbody>
-                                @foreach($Pokemones as $pokemon)
                                 <tr>
                                     <td>{{ $pokemon->name }}</td>
                                     <td>{{ $pokemon->type_first}}</td>
@@ -38,11 +37,8 @@
                                     </center>
                                     </td>
                                 </tr>
-                                @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination pull-right"> {!! $Pokemones->render() !!} </div>
-
             </div>
         </div>
     </div>
