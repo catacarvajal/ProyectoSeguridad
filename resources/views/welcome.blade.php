@@ -8,8 +8,12 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    Bienvenido a la pokedex segura, porfavor ingrese con su cuenta para ver la información de los pokemon
+                     
                 </div>
+
+                
+
             </div>
         </div>
     </div>
