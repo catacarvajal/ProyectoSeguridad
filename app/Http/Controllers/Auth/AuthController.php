@@ -52,7 +52,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'g-recaptcha-response' => 'required|recaptcha',
+            //'g-recaptcha-response' => 'required|recaptcha',
         ]);
     }
 
@@ -70,10 +70,10 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-    protected function validateLogin(Request $request)
+  /*  protected function validateLogin(Request $request)
 {
     $this->validate($request, [
         $this->loginUsername() => 'required', 'password' => 'required','g-recaptcha-response' => 'required|recaptcha',
     ]);
-}
+}*/
 }
