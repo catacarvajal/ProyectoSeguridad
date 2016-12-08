@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--{!! Recaptcha::render() !!}-->
+                        {!! Recaptcha::render() !!}
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
