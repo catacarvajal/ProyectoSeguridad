@@ -28,4 +28,9 @@ class CommentaryController extends Controller
         $pokemon = Pokemon::find($id);
         return view('commentary')->with('pokemon',$pokemon);
     }
+
+    public function store(Request $request)
+    {
+        dd($request);
+    }
 }
