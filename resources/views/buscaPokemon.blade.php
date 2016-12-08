@@ -8,15 +8,22 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">Buscar Pokemon</div>
-
+              
                 <tbody>
                 <form role="form" method="POST" class="navbar-form navbar-left" role = "search" action="{{ url('/Buscar') }}"> 
                 {!! csrf_field() !!}
                   <div class="form-group">
                     {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre pokemon']) !!}
                   </div>
+               
                   <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
+
+                @if ($NoExiste == NULL)
+
+                    <div style="color:#FF0000;"> <h4>El pokemon que buscas no se encuentra en la pokedex</h4>
+                        </div>
+            @endif
 
                     <table class="table table-bordered table-striped table-hover" id="dataTable">
 
