@@ -28,29 +28,24 @@ class BuscarController extends Controller
      */
     public function index(Request $request)
     {         
+        $noexiste = 1;
         $Pokemones= Pokemon::paginate(15);
-        return view('buscaPokemon')->with('Pokemones',$Pokemones);
+        return view('buscaPokemon')->with('Pokemones',$Pokemones)->with('NoExiste',$noexiste);
     }
 
     public function postPokemon(Request $request)
     {
         $nombre=$request->input('name');
-        
-            try
-            {
-               $pokemon = Pokemon::where('name','=',$nombre)->first();;
-                $Pokemones= Pokemon::paginate(15);
-            }
-            catch(PDOException $e)
-            {
-                return 'existe un error' + $e;
-            }
-
-            if($pokemon =='null')
-            {
-                 return view('buscaPokemon')->with('Pokemones',$Pokemones);
-            }
+        $pokemon = Pokemon::where('name','=',$nombre)->first();
+        $Pokemones= Pokemon::paginate(15);
+        $noexiste = NULL;
+            
+        if($pokemon == NULL)
+        {
+             return view('buscaPokemon')->with('Pokemones',$Pokemones)->with('NoExiste',$noexiste);
+        }
         return view('indexPokemon')->with('pokemon',$pokemon);
+
     }
 
     public function show( $id )
