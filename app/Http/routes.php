@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/Buscar', 'BuscarController@index');
+Route::get('/Comentario/{id}', 'CommentaryController@index');
