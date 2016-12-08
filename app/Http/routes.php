@@ -20,3 +20,4 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/Buscar', 'BuscarController@index');
 Route::get('/Comentario/{id}', 'CommentaryController@index');
+Route::post('/crearComentario', 'CommentaryController@store');
