@@ -13,9 +13,11 @@
                     {!! $pokemon->type_first !!}
                     {!! $pokemon->type_second !!}
 
-                    {!! Form::open(['url' => '/cargar', 'class' => 'form-horizontal', 'files' => true]) !!}
+                    {!! Form::open(['url' => '/crearComentario', 'class' => 'form-horizontal', 'files' => true]) !!}
                                         
-                    {!! Form::submit('Visualizar graficos', ['class' => 'btn btn-block btn-primary btn-xs', 'id' => 'cargar', 'style' => 'width:30%; margin-left:3%;margin-top:3%;']) !!}
+                    {!! Form::textarea('comentario', null, ['class' => 'form-control', 'placeholder' => 'Comentario de pokemon', 'type' => 'textArea', 'id' => 'textComentario']) !!}
+
+                    {!! Form::submit('Crear comentario', ['class' => 'btn', 'id' => 'cargar']) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
