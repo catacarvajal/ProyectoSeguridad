@@ -10,7 +10,9 @@
         "appzcoder/crud-generator": "^1.0",
         "laravelcollective/html": "5.2.*",
         "laracasts/flash": "^2.0",
-        "illuminate/html": "5.0.*@dev"
+        "illuminate/html": "5.0.*@dev",
+         "greggilbert/recaptcha": "dev-master"
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
