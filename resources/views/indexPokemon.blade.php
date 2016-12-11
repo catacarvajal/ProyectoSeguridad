@@ -10,13 +10,20 @@
                 <div class="panel-heading">Buscar Pokemon</div>
 
                 <tbody>
-                <form role="form" method="POST" class="navbar-form navbar-left" role = "search" action="{{ url('/Buscar') }}"> 
+                {!! Form::open(['method'=>'POST','url' => ['/Buscar'],
+                            'style' => 'display:inline',
+                            'class'=>'navbar-form navbar-left',
+                            'role' => "search"
+                        ]) !!}                     
+         
                 {!! csrf_field() !!}
                   <div class="form-group">
                     {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre pokemon']) !!}
                   </div>
+               
                   <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
+                  {!! Form::close() !!}
 
                     <table class="table table-bordered table-striped table-hover" id="dataTable">
 

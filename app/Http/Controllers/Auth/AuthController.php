@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -51,7 +52,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6|confirmed|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
             //'g-recaptcha-response' => 'required|recaptcha',
         ]);
     }
@@ -64,6 +65,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        Log::info('El usuario: '.$data['name'].'  con ip  '.\Request::ip().'  se ha registrado en el sistema' );
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
