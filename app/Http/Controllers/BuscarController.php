@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Pokemon;
+use App\Commentary;
 
 class BuscarController extends Controller
 {
@@ -35,6 +36,7 @@ class BuscarController extends Controller
 
     public function postPokemon(Request $request)
     {
+
         $nombre=$request->input('name');
         $pokemon = Pokemon::where('name','=',$nombre)->first();
         $Pokemones= Pokemon::paginate(15);
@@ -51,7 +53,10 @@ class BuscarController extends Controller
     public function show( $id )
     {
         $ic = Pokemon::find($id);
-        return view('show')->with('pokemon',$ic);
+
+        $comentarios = Commentary::where('id_pokemon', $id)->paginate(25);
+
+        return view('show')->with('pokemon',$ic)->with('comentarios', $comentarios);
     }
 
 }

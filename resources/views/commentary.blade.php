@@ -15,7 +15,7 @@
 
                     {!! Form::open(['url' => '/crearComentario', 'class' => 'form-horizontal', 'files' => true]) !!}
                                         
-                    {!! Form::textarea('comentario', null, ['class' => 'form-control', 'placeholder' => 'Comentario de pokemon', 'type' => 'textArea', 'id' => 'textComentario']) !!}
+                    {!! Form::textarea('comentario', null, ['class' => 'form-control', 'placeholder' => 'Comentario de pokemon', 'type' => 'textArea', 'id' => 'textComentario', 'style' => 'resize:none; margin-top:8px; margin-bottom:8px;' ]) !!}
 
                     {!! Form::submit('Crear comentario', ['class' => 'btn', 'id' => 'cargar']) !!}
                     {!! Form::close() !!}
