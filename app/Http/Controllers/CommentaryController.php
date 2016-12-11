@@ -32,6 +32,8 @@ class CommentaryController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->input('comentario'););
+
         dd($request);
     }
 }

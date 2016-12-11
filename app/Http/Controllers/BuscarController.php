@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Pokemon;
+use App\Commentary;
 
 class BuscarController extends Controller
 {
@@ -58,12 +59,10 @@ class BuscarController extends Controller
 
     public function show( $id )
     {
-        
-  
         $ic = Pokemon::find($id);
         Log::info('El usuario: '.\Auth::user()->name.'con ip:  '.\Request::ip().'  Ingreso a la información del pokemon '.$ic->name );
-        
-        return view('show')->with('pokemon',$ic);
+        $comentarios = Commentary::where('id_pokemon', $id)->paginate(25);
+        return view('show')->with('pokemon',$ic)->with('comentarios', $comentarios);
     }
 
 }
