@@ -24,5 +24,5 @@ Route::get('/Comentario/{id}', 'CommentaryController@index');
 
 Route::get('/Buscar/show/{id}', 'BuscarController@show');
 
-Route::post('/crearComentario', 'CommentaryController@store');
+Route::post('/crearComentario', 'BuscarController@store');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

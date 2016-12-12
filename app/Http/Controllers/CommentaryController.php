@@ -27,13 +27,16 @@ class CommentaryController extends Controller
     public function index($id)
     {
         $pokemon = Pokemon::find($id);
+        
         return view('commentary')->with('pokemon',$pokemon);
     }
 
     public function store(Request $request)
     {
-        dd($request->input('comentario'););
-
-        dd($request);
+        if(\Auth::user()->role == 1)
+        {
+            \Area
+        }
+        return view('')
     }
 }

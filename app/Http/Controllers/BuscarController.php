@@ -62,7 +62,22 @@ class BuscarController extends Controller
         $ic = Pokemon::find($id);
         Log::info('El usuario: '.\Auth::user()->name.'con ip:  '.\Request::ip().'  Ingreso a la información del pokemon '.$ic->name );
         $comentarios = Commentary::where('id_pokemon', $id)->paginate(25);
+        \Session::put('id', $id);
         return view('show')->with('pokemon',$ic)->with('comentarios', $comentarios);
     }
 
+    public function store(Request $request)
+    {
+        $id = \Session::get('id');
+        if(\Auth::user()->role == 1)
+        {
+            $comentario = new Commentary;
+            $comentario->id_pokemon = (int)$id;
+            $comentario->id_user = \Auth::user()->id;
+            $comentario->commentary = $request->input('comentario');
+            $comentario->save();
+        }
+
+        return \Redirect::to('/Buscar/show/' . $id);
+    }
 }

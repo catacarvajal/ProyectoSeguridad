@@ -25,7 +25,7 @@ class Commentary extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_pokemon','id_user'];
+    protected $fillable = ['id_pokemon','id_user', 'commentary'];
 
     public function getUser()
     {

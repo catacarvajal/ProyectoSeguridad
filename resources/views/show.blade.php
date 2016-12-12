@@ -51,23 +51,33 @@
                                             </address>
                                         </div>
                                     </div>
-                            </section>
+                            </section> 
                         </div>
-                        <div class="col-md-12">
-                            <table class="table table-bordered table-striped table-hover" id="dataTable">
-                                <thead>
-                                    <tr>
-                                        <th> Comentarios</th>
-                                    </tr>
-                                </thead>            
-                                <tbody>
+                        @if(\Auth::user()->role == 1)
+                            <div class="col-md-12">
+                                {!! Form::open(['url' => '/crearComentario/', 'class' => 'form-horizontal', 'files' => true]) !!}
+
+                                {!! csrf_field() !!}
+                                
+                                {!! Form::textarea('comentario', null, ['class' => 'form-control', 'placeholder' => 'Comentario de pokemon', 'type' => 'textArea', 'id' => 'textComentario', 'style' => 'resize:none; margin-top:8px; margin-bottom:8px;' ]) !!}
+
+                                {!! Form::submit('Crear comentario', ['class' => 'btn', 'id' => 'cargar']) !!}
+                                {!! Form::close() !!}
+                            </div>
+                        @endif
+                        <div class="col-md-12" style="margin-top:10px">
+                            <h2>Comentarios</h2>
+                            @if($comentarios->total() == 0)
+                                <h4>No existen comentarios</h4>
+                            @else
+                                <ul class="list-group list-group-unbordered">
                                     @foreach($comentarios as $comentario)
-                                        <tr>
-                                            <td>{{ $comentario->commentary}}</td>
-                                        </tr>
+                                        <li class="list-group-item">
+                                            {{ $comentario->commentary }}
+                                        </li>
                                     @endforeach
-                                </tbody>
-                            </table>
+                                </ul>
+                            @endif
                             <div class="pagination pull-right"> {!! $comentarios->render() !!} </div>
                         </div>
                     </div>
