@@ -76,6 +76,10 @@ class BuscarController extends Controller
             $comentario->id_user = \Auth::user()->id;
             $comentario->commentary = $request->input('comentario');
             $comentario->save();
+
+            $nombre = Pokemon::find($id);
+
+            Log::info('El usuario: '.\Auth::user()->name.'con ip:  '.\Request::ip().'  Realizo un comentario del pokemon '.$nombre->name );
         }
 
         return \Redirect::to('/Buscar/show/' . $id);
